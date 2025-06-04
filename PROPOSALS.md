@@ -62,7 +62,6 @@ Rough ideas that could be a starting point for something:
     - Uses gradient-boosted survival trees with time-dependent risk scoring
     - Paradigm shift: From one-off binary predictions to continuously updated risk landscapes enabling real-time clinical intervention
     - Treats treatment as control inputs in a dynamic system rather than fixed covariates
-
     - **Data Assumptions:** Requires longitudinal, time-stamped data on pain scores, opioid use, treatment interventions, and outcomes; assumes accurate event timing, minimal informative censoring, and sufficient follow-up duration for survival analysis.
     - **Outcomes:** Predicts individualized time-to-event outcomes such as relapse, treatment discontinuation, or composite endpoints; enables dynamic risk stratification for real-time intervention.
     - **Feasibility Notes:** Needs moderate-to-large sample size (N > 300) with adequate event rates; data must support time-varying covariates and right-censoring; survival analysis methods require careful handling of missingness and censoring.
