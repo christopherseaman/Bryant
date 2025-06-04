@@ -1,4 +1,4 @@
-# Paradigmatic AI Research Proposals for Carroll Award
+# AI Research Proposals for Carroll Award
 
 ## Inspiration Sketches
 
