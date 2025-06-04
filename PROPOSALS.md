@@ -1,6 +1,8 @@
 # Paradigmatic AI Research Proposals for Carroll Award
 
-## Proposal 1: Multi-Modal Temporal Modeling  
+## Multi-Modal Temporal Modeling  
+
+Develop an integrated time-series framework that jointly models pain, substance use, housing status, and treatment retention across six follow-up points using a combination of joint T-LSTM and mixed-effects models. The analysis assumes that the dataset contains multiple visits and follow-up timepoints per patient, with structured longitudinal data aligning these repeated measures. By leveraging interdependent clinical and behavioral streams, it aims for at least a 15% performance gain over single-domain baselines and plans to deliver a prototype dashboard for clinical decision support within 3–5 years.
 
 • Strength: Very Strong
 Directly addresses Carroll Award criteria by shifting from discrete outcome prediction to integrated, multi-domain temporal system modeling.
@@ -11,78 +13,52 @@ Directly addresses Carroll Award criteria by shifting from discrete outcome pred
 - High-risk, high-reward approach with potential for transformative impact on multi-domain clinical management within 3-5 years.
 
 **Data Sources:**
+
 - OTOP Pain Tracking Intake and Follow-Up Data
 
 **Variables from OTOP Pain Tracking Intake and Follow-Up Data:**
 
 - Required: `intakedate`, `dob`, `gender`, `race`, `housingstatus`, `painfrequency`, `painduration`, `currentpainyes`, `intakeuds`, `doseamount`, `recentdose`, `takehomes`, `takehomephase`, `enrollmentstatus`, `udsresults`, `discharge_reason_1mo`, `discharge_reason_mo2`, `discharge_reason_3mo`, `discharge_reason_6mo`, `discharge_reason_12mo`
 - Optional: `referral_source`, `medicationreceived`, `housingother`, `staffinitials`, `episode_number`, `research_consent`
+
 **Summary**: Joint T-LSTM and mixed-effects modeling of intake & 1/2/3/6/12-month streams to predict relapse and retention.  
+
 **Hypothesis**: Integrating all modalities yields ≥15% boost over single-domain models.  
-**Data Required**: Intake & follow-up fields (demographics, painfrequency, painduration, currentpainyes, intakeuds/udsresults, doseamount/recentdose, takehomephase, housingstatus, enrollmentstatus, discharge_reason).  
+
+**Data Required**: Intake & follow-up fields (demographics, painfrequency, painduration, currentpainyes, intakeuds/udsresults, doseamount/recentdose, takehomephase, housingstatus, enrollmentstatus, discharge_reason).
+
+**Data Assumptions**: The dataset includes multiple visits and follow-up timepoints per patient. The `currentpainyes` field is expected to contain actual free-text pain descriptions, not just simple "yes" responses.
+
 **Plan**: (1) Clean & align time-series; (2) Train & validate models vs baselines; (3) Cross-validate & calibrate; (4) Prototype dashboard.
 
-## Proposal 2: Dynamic Causal Network Analysis  
+### Methodology Details
 
-• Strength: Weak
+- Baseline models for comparison (random forest, logistic regression)
+- Evaluation metrics (AUC, calibration curves, silhouette scores for clustering)
+- Cross-validation strategy (k-fold, temporal splits)
+- Hyperparameter tuning approach
 
-Provides incremental advance in temporal causal inference but does not fully meet Carroll Award criteria for paradigmatic shift or cross-scale integration.
+### Expected Outcomes
 
-- Learns time-varying Bayesian networks to map feedback loops among pain, substance use, housing, and retention.
-- Focuses on identifying intervention points within discrete clinical domains, not on managing complex, interdependent systems.
-- Does not incorporate data across biological or socioeconomic scales.
-- Methodologically robust but lacks disruptive or high-risk elements prioritized by the award.
+- Concrete success criteria (target AUC thresholds, effect sizes)
+- Statistical power calculations
+- Clinical validation plans (prospective cohort evaluation)
 
-**Data Sources:**
-- OTOP Pain Tracking Intake and Follow-Up Data
+### Implementation Timeline
 
-**Variables from OTOP Pain Tracking Intake and Follow-Up Data:**
+- Phase 1: Data preparation and cleaning (Months 1-3)
+- Phase 2: Model development and validation (Months 4-9)
+- Phase 3: Clinical testing and dashboard development (Months 10-12)
 
-- Required: `painfrequency`, `painduration`, `currentpainyes`, `intakeuds`, `recentdose`, `takehomes`, `takehomephase`, `housingstatus`, `enrollmentstatus`, `udsresults`, `discharge_reason_1mo`, `discharge_reason_mo2`, `discharge_reason_3mo`, `discharge_reason_6mo`, `discharge_reason_12mo`
-- Optional: `doseamount`, `mat`, `mat_2mo`, `mat_3mo`, `mat_6mo`, `mat_12mo`
-**Summary**: Learn time-varying Bayesian network (PCMCI) among painfrequency, polysubstance use, housing transitions, and retention.  
-**Hypothesis**: Temporal causal loops identify intervention points missed by static models.  
-**Data Required**: painfrequency, painduration, currentpainyes, intakeuds/udsresults, recentdose, takehomephase, housingstatus, enrollmentstatus, discharge_reason across timepoints.  
-**Plan**: (1) Aggregate & align variables; (2) Structure learning & parameter estimation; (3) Simulate interventions & map leverage points.
+### Resources Required
 
-## Proposal 3: Causal Treatment Effect Estimation  
+- Personnel needs (data engineers, clinicians, statisticians)
+- IRB approval and ethical considerations
+- Data governance and privacy protocols
 
-• Strength: Very Weak
-Offers practical, incremental improvements to clinical policy but does not align with Carroll Award criteria for bold, disruptive, or cross-scale innovation.
+## NLP Pain Phenotyping
 
-- Applies marginal structural models to estimate causal effects of dosing and take-home policies on retention and UDS outcomes.
-- Focuses on optimizing existing clinical practices within a single domain, without integrating multiple clinical, biological, or socioeconomic factors.
-- Lacks elements of paradigmatic shift, cross-scale integration, or high-risk innovation.
-  
-**Data Sources:**
-- OTOP Pain Tracking Intake and Follow-Up Data
-
-**Variables from OTOP Pain Tracking Intake and Follow-Up Data:**
-
-- Required: `doseamount`, `recentdose`, `takehomes`, `takehomephase`, `enrollmentstatus`, `udsresults`
-- Optional: `mat`, `mat_2mo`, `mat_3mo`, `mat_6mo`, `mat_12mo`, `discharge_reason_1mo`, `discharge_reason_mo2`, `discharge_reason_3mo`, `discharge_reason_6mo`, `discharge_reason_12mo`
-**Summary**: Apply marginal structural models with IPW to estimate causal effects of MAT dose and take-home policies on retention & UDS outcomes.  
-**Hypothesis**: Optimal dosing and take-home strategies improve retention by ≥10%.  
-**Data Required**: doseamount, recentdose, takehomes, takehomephase, enrollmentstatus, udsresults across intake and follow-ups.  
-**Plan**: (1) Define exposures/outcomes/confounders; (2) Compute IP weights & fit MSM; (3) Perform sensitivity analyses; (4) Recommend policy adjustments.
-
-## Proposal 4: Transfer Learning for Adolescent Risk Prediction  
-
-• Strength: Weak
-Partially aligns with Carroll Award criteria by attempting cross-population transfer learning, but remains focused on discrete risk prediction rather than complex systems management.
-
-- Pretrains sequence autoencoder on adult trajectories and fine-tunes on adolescent data to improve opioid initiation risk prediction.
-- Demonstrates technical innovation in transfer learning across age-defined cohorts, but does not integrate data across biological or socioeconomic scales.
-- Does not model interdependent clinical systems or address multi-domain integration.
-- Moderate risk; potential for impact is limited by focus on single-outcome prediction.
-
-• Data Assumptions: Cohorts defined solely by DOB and intake date; no external labels.  
-**Summary**: Pretrain sequence autoencoder on adult (≥25 yrs) trajectories; fine-tune on adolescents (<18 yrs) for opioid initiation risk.  
-**Hypothesis**: Transferred latent representations yield ≥10% uplift vs youth-only baselines.  
-**Data Required**: Age labels from DOB, intake date, and intake & follow-up panels.  
-**Plan**: (1) Pretrain on adult sequences; (2) Freeze encoder & fine-tune on adolescent outcomes; (3) Evaluate vs baselines.
-
-## Proposal 5: NLP Pain Phenotyping  
+Apply transformer-based embeddings (e.g., BioBERT/ClinicalBERT) and unsupervised clustering to free-text intake pain descriptions (`currentpainyes`) to uncover novel patient phenotypes linked to treatment response. Stratify patients by risk profiles and guide phenotype-specific interventions, targeting near-term translational impact in patient stratification.
 
 • Strength: Very Strong
 Strongly meets Carroll Award criteria by leveraging AI to extract complex, emergent phenotypes from unstructured clinical text, moving beyond discrete variable modeling.
@@ -92,8 +68,12 @@ Strongly meets Carroll Award criteria by leveraging AI to extract complex, emerg
 - Does not integrate data across biological or socioeconomic scales; focus is on clinical and behavioral text data.
 - High-risk, disruptive approach with potential for near-term transformative change in patient stratification and intervention.
 
-• Data Assumptions: Relies solely on `currentpainyes`; no external lexicons or annotations.  
+• Data Assumptions: Relies solely on `currentpainyes`, which is assumed to contain substantial free-text pain descriptions rather than simple "yes"/"no" responses; no external lexicons or annotations.
+
 **Summary**: Apply transformer embeddings and clustering to intake pain descriptions to derive phenotypes linked to clinical trajectories.  
+
 **Hypothesis**: Text-derived phenotypes stratify patients by treatment response and risk profiles.  
+
 **Data Required**: Free-text `currentpainyes` field at intake.  
+
 **Plan**: (1) Clean & embed text; (2) Cluster phenotypes; (3) Associate clusters with outcomes; (4) Propose phenotype-specific interventions.
