@@ -2,10 +2,14 @@
 
 ## Proposal 1: Multi-Modal Temporal Modeling  
 
-• Strength: Fully self-contained; highest predictive accuracy.
+• Strength: Very Strong
+Directly addresses Carroll Award criteria by shifting from discrete outcome prediction to integrated, multi-domain temporal system modeling.
 
-- Boldly targets the Carroll Award's paradigm shift by modeling complex, interdependent patient systems rather than isolated clinical events; strong alignment with the award's disruptive vision.
-- Approach is ambitious and high-risk, but stands out as transformative compared to conventional predictive models focused on discrete outcomes.
+- Simultaneously models pain, substance use, housing, and treatment retention as interdependent time-series, rather than isolated variables.
+- Employs joint T-LSTM and mixed-effects models to integrate data across multiple clinical domains and timepoints.
+- Lacks explicit integration of genetic/proteomic or socioeconomic data; focus remains on clinical and behavioral scales.
+- High-risk, high-reward approach with potential for transformative impact on multi-domain clinical management within 3-5 years.
+
 **Data Sources:**
 - OTOP Pain Tracking Intake and Follow-Up Data
 
@@ -20,10 +24,15 @@
 
 ## Proposal 2: Dynamic Causal Network Analysis  
 
-• Strength: Reveals actionable feedback loops; explainable insights.
+• Strength: Weak
 
-- Methodologically strong but primarily extends existing causal inference to time-varying settings; does not fully embody the bold, disruptive paradigm shift sought by the Carroll Award.
-- Focus remains closer to mapping discrete relationships than managing complex, multi-scale systems, limiting transformative impact.
+Provides incremental advance in temporal causal inference but does not fully meet Carroll Award criteria for paradigmatic shift or cross-scale integration.
+
+- Learns time-varying Bayesian networks to map feedback loops among pain, substance use, housing, and retention.
+- Focuses on identifying intervention points within discrete clinical domains, not on managing complex, interdependent systems.
+- Does not incorporate data across biological or socioeconomic scales.
+- Methodologically robust but lacks disruptive or high-risk elements prioritized by the award.
+
 **Data Sources:**
 - OTOP Pain Tracking Intake and Follow-Up Data
 
@@ -38,10 +47,13 @@
 
 ## Proposal 3: Causal Treatment Effect Estimation  
 
-• Strength: Direct clinical policy guidance from dose & take-home analyses.
+• Strength: Very Weak
+Offers practical, incremental improvements to clinical policy but does not align with Carroll Award criteria for bold, disruptive, or cross-scale innovation.
 
-- Relies on established causal inference techniques for incremental policy improvement; lacks the boldness and high-risk innovation prioritized by the Carroll Award.
-- Does not advance the field toward managing complex, interdependent systems or cross-scale integration; too conventional for this award's focus.
+- Applies marginal structural models to estimate causal effects of dosing and take-home policies on retention and UDS outcomes.
+- Focuses on optimizing existing clinical practices within a single domain, without integrating multiple clinical, biological, or socioeconomic factors.
+- Lacks elements of paradigmatic shift, cross-scale integration, or high-risk innovation.
+  
 **Data Sources:**
 - OTOP Pain Tracking Intake and Follow-Up Data
 
@@ -56,10 +68,14 @@
 
 ## Proposal 4: Transfer Learning for Adolescent Risk Prediction  
 
-• Strength: Enhances youth risk detection via adult cohort latent dynamics.
+• Strength: Weak
+Partially aligns with Carroll Award criteria by attempting cross-population transfer learning, but remains focused on discrete risk prediction rather than complex systems management.
 
-- Represents a bold attempt to transfer knowledge across populations, aligning with the Carroll Award's call for disruptive, cross-paradigm AI approaches.
-- While innovative, the focus is still on risk prediction for discrete outcomes rather than fundamentally shifting to complex systems management.
+- Pretrains sequence autoencoder on adult trajectories and fine-tunes on adolescent data to improve opioid initiation risk prediction.
+- Demonstrates technical innovation in transfer learning across age-defined cohorts, but does not integrate data across biological or socioeconomic scales.
+- Does not model interdependent clinical systems or address multi-domain integration.
+- Moderate risk; potential for impact is limited by focus on single-outcome prediction.
+
 • Data Assumptions: Cohorts defined solely by DOB and intake date; no external labels.  
 **Summary**: Pretrain sequence autoencoder on adult (≥25 yrs) trajectories; fine-tune on adolescents (<18 yrs) for opioid initiation risk.  
 **Hypothesis**: Transferred latent representations yield ≥10% uplift vs youth-only baselines.  
@@ -68,10 +84,14 @@
 
 ## Proposal 5: NLP Pain Phenotyping  
 
-• Strength: Uncovers novel patient subgroups via free-text phenotypes.
+• Strength: Very Strong
+Strongly meets Carroll Award criteria by leveraging AI to extract complex, emergent phenotypes from unstructured clinical text, moving beyond discrete variable modeling.
 
-- Strongly embodies the Carroll Award's vision by using AI to uncover hidden, complex patient phenotypes from unstructured data—moving beyond discrete clinical variables.
-- Approach is disruptive and has high transformative potential for shifting clinical paradigms, though feasibility risks remain.
+- Applies transformer-based embeddings and clustering to free-text pain descriptions, enabling discovery of novel patient subgroups.
+- Moves toward managing complex, interdependent systems by linking text-derived phenotypes to clinical trajectories and outcomes.
+- Does not integrate data across biological or socioeconomic scales; focus is on clinical and behavioral text data.
+- High-risk, disruptive approach with potential for near-term transformative change in patient stratification and intervention.
+
 • Data Assumptions: Relies solely on `currentpainyes`; no external lexicons or annotations.  
 **Summary**: Apply transformer embeddings and clustering to intake pain descriptions to derive phenotypes linked to clinical trajectories.  
 **Hypothesis**: Text-derived phenotypes stratify patients by treatment response and risk profiles.  
