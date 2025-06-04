@@ -1,0 +1,7 @@
+# Predicting Opioid Initiation in Adolescents and Young Adults Using Machine Learning: A Precision Prevention Framework
+
+PROJECT NICKNAME: INSIGHT  
+  
+PROJECT DESCRIPTION, GOAL, & TIMELINE: I'm writing a proposal that will incorporate machine learning to predict opioid initiation in young people. I would like to add CTSI or a specific expert in machine learning from CTSI to the proposal. Is there a way to identify a person that would be willing to be a part of this proposal if it's funded? Could I also get a quote for how much it would cost a consultant to conduct the machine learning portion?
+  
+Specifically, I want to use machine learning (which I'm not trained in) to develop a model using EHR data from adults with opioid use disorder to predict opioid initiation in adolescents and young adults. I'm in conversation right now with a clinic that I could potentially pull the data from, and I would need help 1) deciding what data will be needed to do this, and 2) how many records we would need to pull from. I would include all of that in the proposal. But then if it's funded, I would want to continue working with someone to learn how to carry this out and test the model see if the predictions are right. Ultimately, the hope is that if we can identify adolescents that we now can see are at a higher likelihood of initiating, we can put prevention efforts into place. I'm available tomorrow at noon and Friday all day until 2pm. Do either of those days work for you?
