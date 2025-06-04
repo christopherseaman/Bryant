@@ -1,36 +1,89 @@
 # Paradigmatic AI Research Proposals for Carroll Award
 
-## Sketches
+## Inspiration Sketches
 
 Rough ideas that could be a starting point for something:
+
+### AI
 
 1. Digital Twin–Driven Adaptive Treatment Orchestration
 
     - Creates patient-level digital twins using longitudinal pain, UDS, medication, and housing data
     - Employs reinforcement learning to optimize multi-domain interventions
     - Paradigmatic shift: From point predictions to closed-loop policy systems managing clinical and social variables simultaneously
-    - **Data Assumptions:** Requires a validation dataset with comparable demographics, environment, and known outcomes for digital twin training and evaluation; assumes sufficient longitudinal data per patient.
-  
+    - **Outcome Specification:** Optimizes treatment recommendations, predicts optimal intervention timing, and generates personalized dosing strategies for each patient.
+    - **Feasibility Notes:**
+        - Requires large, high-quality longitudinal datasets per patient (hundreds to thousands of patients with multi-year records).
+        - Demands robust computational infrastructure for real-time simulation and policy optimization (GPU-enabled servers, scalable storage).
+        - Implementation timeline: 12–24 months for full deployment, including model training and clinical integration.
+        - Validation requires prospective simulation and retrospective outcome comparison; external validation on independent cohorts recommended.
+
 2. Temporal Graph Neural Systems of Socio-Clinical Interdependencies
 
     - Models patients as dynamic graphs with visits, medications, UDS results, and housing as interconnected nodes
     - Uses temporal graph neural networks to discover system-level patterns predicting outcomes
     - Paradigmatic shift: From linear risk scores to graph-structured discovery of interacting subsystems
-    - **Data Assumptions:** Assumes adequate patient volume and graph connectivity; requires longitudinal, multi-domain data and sufficient event density for meaningful temporal graph pattern discovery.
+    - **Outcome Specification:** Discovers predictive subnetworks, enables risk stratification, and provides early warning systems for treatment failure or adverse events.
+    - **Feasibility Notes:**
+        - Needs sufficient patient volume and event density (ideally >1,000 patients, frequent events per patient).
+        - Requires advanced graph analytics frameworks (e.g., PyTorch Geometric, DGL) and high-memory compute nodes.
+        - Implementation timeline: 9–18 months, including graph construction and iterative model refinement.
+        - Validation through cross-validation, temporal holdout, and subnetwork interpretability assessments.
 
 3. Counterfactual Causal Platform for Policy-Level Simulation
 
     - Builds structural causal models linking housing, medication adherence, UDS outcomes, and retention
     - Creates "what-if" simulators for policy makers to test resource allocation scenarios
     - Paradigmatic shift: From correlation-based predictions to causal policy simulation across socioeconomic and treatment domains
-    - **Data Assumptions:** Requires data on policy variation and structural relationships; assumes minimal unmeasured confounding and that causal structure can be reasonably specified from available variables.
+    - **Outcome Specification:** Simulates policy impacts, generates resource allocation recommendations, and provides quantitative "what-if" scenario results for decision support.
+    - **Feasibility Notes:**
+        - Requires datasets with policy variation and well-specified structural relationships (hundreds of policy instances or natural experiments).
+        - Needs causal inference toolkits (e.g., DoWhy, CausalNex) and moderate computational resources.
+        - Implementation timeline: 6–12 months for initial platform, with ongoing refinement as new data/policies emerge.
+        - Validation via back-testing on historical policy changes and sensitivity analyses.
 
 4. Hybrid Agent-Based & Generative Synthetic Cohort Engine
 
     - Combines variational autoencoders with agent-based modeling to simulate clinic ecosystems
     - Tests disruptive interventions (e.g., housing prioritization) at population scale
     - Paradigmatic shift: Integrates bottom-up patient simulation with macro-scale policy testing
-    - **Data Assumptions:** Needs population-level parameters and individual-level data to calibrate agent behaviors; assumes agent actions and interactions can be meaningfully modeled and validated.
+    - **Outcome Specification:** Estimates population-level intervention effects, validates synthetic cohorts against real-world data, and reveals emergent system behaviors under novel scenarios.
+    - **Feasibility Notes:**
+        - Needs both population-level parameters and granular individual-level data for agent calibration (hundreds to thousands of agents).
+        - Requires agent-based simulation platforms (e.g., Mesa, AnyLogic) and generative modeling frameworks (e.g., TensorFlow, PyTorch).
+        - High computational requirements for large-scale simulations; access to cloud or HPC resources recommended.
+        - Implementation timeline: 12–24 months, including iterative calibration and scenario testing.
+        - Validation through synthetic-real cohort comparison and scenario-based stress testing.
+
+### ML
+
+1. Dynamic Survival Ensemble for Adaptive Pain-Addiction Trajectories
+
+    - Uses gradient-boosted survival trees with time-dependent risk scoring
+    - Paradigm shift: From one-off binary predictions to continuously updated risk landscapes enabling real-time clinical intervention
+    - Treats treatment as control inputs in a dynamic system rather than fixed covariates
+
+    - **Data Assumptions:** Requires longitudinal, time-stamped data on pain scores, opioid use, treatment interventions, and outcomes; assumes accurate event timing, minimal informative censoring, and sufficient follow-up duration for survival analysis.
+    - **Outcomes:** Predicts individualized time-to-event outcomes such as relapse, treatment discontinuation, or composite endpoints; enables dynamic risk stratification for real-time intervention.
+    - **Feasibility Notes:** Needs moderate-to-large sample size (N > 300) with adequate event rates; data must support time-varying covariates and right-censoring; survival analysis methods require careful handling of missingness and censoring.
+
+2. Causal Treatment-Sequence Inference via Targeted Learning
+
+    - Combines IPTW and TMLE with SuperLearner ensembles for causal effect estimation
+    - Paradigm shift: Transforms observational data into decision-support for "what-if" treatment sequence planning
+    - Moves from "who will relapse?" to "what treatment path optimizes outcomes?"
+    - **Data Assumptions:** Requires rich longitudinal data with detailed treatment sequences, covariates, and outcomes; assumes sequential ignorability (no unmeasured confounding at each decision point), positivity, and correct model specification for causal inference.
+    - **Outcomes:** Estimates causal effects of alternative treatment sequences on relapse, retention, or pain improvement; supports individualized treatment path recommendations.
+    - **Feasibility Notes:** Needs large sample size (N > 500) with diverse treatment trajectories; data must be structured for time-varying exposures and outcomes; robust to moderate missingness if missing at random.
+
+3. Temporal Multi-View Clustering for Phenotype Discovery
+
+    - Multi-view clustering across pain, treatment, and UDS pattern dimensions over time
+    - Paradigm shift: Replaces one-size-fits-all guidelines with empirically derived trajectory phenotypes
+    - Recognizes pain-addiction as complex multi-component system
+    - **Data Assumptions:** Requires multi-modal, longitudinal data with synchronized time points across views (pain, treatment, UDS); assumes sufficient within- and between-patient variability and minimal batch effects.
+    - **Outcomes:** Identifies distinct patient trajectory phenotypes based on temporal patterns; clusters are validated for clinical relevance and interpretability.
+    - **Feasibility Notes:** Needs moderate sample size (N > 200) with repeated measures per patient; clustering validity depends on data completeness and dimensionality; interpretability requires linkage to clinical outcomes and expert review.
 
 ## Multi-Modal Temporal Modeling  
 
@@ -65,7 +118,12 @@ Directly addresses Carroll Award criteria by shifting from discrete outcome pred
 
 **Data Required**: Intake & follow-up fields (demographics, painfrequency, painduration, currentpainyes, intakeuds/udsresults, doseamount/recentdose, takehomephase, housingstatus, enrollmentstatus, discharge_reason).
 
-**Plan**: (1) Clean & align time-series; (2) Train & validate models vs baselines; (3) Cross-validate & calibrate; (4) Explore development of a prototype dashboard if results support further investigation.
+**Plan:**
+
+1. Clean & align time-series
+2. Train & validate models vs baselines
+3. Cross-validate & calibrate
+4. Explore development of a prototype dashboard if results support further investigation.
 
 ### Methodology Details
 
@@ -113,4 +171,9 @@ Apply transformer-based embeddings (e.g., BioBERT/ClinicalBERT) and unsupervised
 
 **Data Required**: Free-text `currentpainyes` field at intake.  
 
-**Plan**: (1) Clean & embed text; (2) Cluster phenotypes; (3) Associate clusters with outcomes; (4) Propose phenotype-specific interventions.
+**Plan**:
+
+1. Clean & embed text
+2. Cluster phenotypes
+3. Associate clusters with outcomes
+4. Propose phenotype-specific interventions.
