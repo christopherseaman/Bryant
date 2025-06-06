@@ -80,11 +80,11 @@ Rough ideas that could be a starting point for something:
     - Multi-view clustering across pain, treatment, and UDS pattern dimensions over time
     - Paradigm shift: Replaces one-size-fits-all guidelines with empirically derived trajectory phenotypes
     - Recognizes pain-addiction as complex multi-component system
-    - **Data Assumptions:** Requires multi-modal, longitudinal data with synchronized time points across views (pain, treatment, UDS); assumes sufficient within- and between-patient variability and minimal batch effects.
+    - **Data Assumptions:** Requires multi-modal, longitudinal data with synchronized time points across views (pain, treatment, UDS); assumes sufficient withinand between-patient variability and minimal batch effects.
     - **Outcomes:** Identifies distinct patient trajectory phenotypes based on temporal patterns; clusters are validated for clinical relevance and interpretability.
     - **Feasibility Notes:** Needs moderate sample size (N > 200) with repeated measures per patient; clustering validity depends on data completeness and dimensionality; interpretability requires linkage to clinical outcomes and expert review.
 
-## Multi-Modal Temporal Modeling  
+## Multi-Modal Temporal Modeling
 
 Develop an integrated time-series framework to explore joint modeling of pain, substance use, housing status, and treatment retention across six follow-up points using a combination of joint T-LSTM and mixed-effects models. By leveraging interdependent clinical and behavioral streams, this project will investigate whether multi-domain modeling can provide meaningful insights beyond single-domain baselines and will assess the feasibility of translational applications such as clinical decision support tools.
 
@@ -153,8 +153,7 @@ Directly addresses Carroll Award criteria by shifting from discrete outcome pred
 
 Apply transformer-based embeddings (e.g., BioBERT/ClinicalBERT) and unsupervised clustering to free-text intake pain descriptions (`currentpainyes`) to uncover novel patient phenotypes linked to treatment response. Stratify patients by risk profiles and guide phenotype-specific interventions, targeting near-term translational impact in patient stratification.
 
-• Strength: Strongly meets Carroll Award criteria by leveraging AI to extract complex, emergent phenotypes from unstructured clinical text, moving beyond discrete variable modeling.
-
+- Strength: Strongly meets Carroll Award criteria by leveraging AI to extract complex, emergent phenotypes from unstructured clinical text, moving beyond discrete variable modeling.
 - Applies transformer-based embeddings and clustering to free-text pain descriptions, enabling discovery of novel patient subgroups.
 - Moves toward managing complex, interdependent systems by linking text-derived phenotypes to clinical trajectories and outcomes.
 - Does not integrate data across biological or socioeconomic scales; focus is on clinical and behavioral text data.
@@ -164,11 +163,11 @@ Apply transformer-based embeddings (e.g., BioBERT/ClinicalBERT) and unsupervised
 
 - Relies on `currentpainyes` containing substantial free-text pain descriptions rather than simple "yes"/"no" responses.
 
-**Summary**: Apply transformer embeddings and clustering to intake pain descriptions to derive phenotypes linked to clinical trajectories.  
+**Summary**: Apply transformer embeddings and clustering to intake pain descriptions to derive phenotypes linked to clinical trajectories.
 
-**Hypothesis**: Text-derived phenotypes stratify patients by treatment response and risk profiles.  
+**Hypothesis**: Text-derived phenotypes stratify patients by treatment response and risk profiles.
 
-**Data Required**: Free-text `currentpainyes` field at intake.  
+**Data Required**: Free-text `currentpainyes` field at intake.
 
 **Plan**:
 
