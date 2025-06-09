@@ -8,7 +8,7 @@ This document provides a comparative analysis of three proposals submitted for t
 * The **Hybrid Opioid Use Prediction** proposal is the most pragmatic and feasible. It uses a robust, well-defined methodology to create a clinically valuable early warning system, though its paradigm shift is more evolutionary than revolutionary.
 * The **Temporal MultiView Clustering** proposal offers a strong balance of innovation and feasibility. It introduces a novel, systems-level approach by integrating multiple data domains to identify patient archetypes, representing a significant paradigm shift with a clear, albeit longer, path to completion.
 
-The final recommendation favors the proposal that best balances a significant paradigmatic shift with a high likelihood of successful execution and clinical impact.
+The final recommendation favors the **Temporal MultiView Clustering** proposal that best balances a significant paradigmatic shift with a high likelihood of successful execution and clinical impact.
 
 ---
 
@@ -18,95 +18,95 @@ The final recommendation favors the proposal that best balances a significant pa
 
 #### Overall Score: 7/10
 
-#### 1. Significance & Paradigm Shift (Weight: 40%)
+#### 1.1: Significance & Paradigm Shift (Weight: 40%)
 
 This proposal offers a profound paradigm shift, moving from static patient "types" to a dynamic, probabilistic model of patient journeys. It directly addresses the Carroll Award's vision of managing "complex, interdependent systems" by treating Opioid Use Disorder (OUD) as a process of state transitions (e.g., 'Stable,' 'High-Risk,' 'Pre-Dropout'). The potential to calculate real-time probabilities for relapse or dropout offers a significant near-term clinical impact by enabling proactive interventions.
 **Score: 9/10**
 
-#### 2. Methodological Rigor (Weight: 30%)
+#### 1.2: Methodological Rigor (Weight: 30%)
 
 The methodology is highly sophisticated. The use of Hidden Markov Models (HMMs) is well-suited for the sparse, longitudinal EHR data, and the plan to use Gated Recurrent Units (GRUs) as a deep learning alternative is a robust validation strategy. The innovative step of clustering on AI-derived features (the HMM transition matrices) is a key technical strength that could yield a more meaningful patient taxonomy.
 **Score: 8/10**
 
-#### 3. Feasibility (Weight: 30%)
+#### 1.3: Feasibility (Weight: 30%)
 
 This is the proposal's primary weakness. The methodologies (HMMs and GRUs) are technically complex and require specialized expertise and computational resources (GPUs). Interpreting the "hidden states" learned by the models can be challenging and time-consuming. The 12-month timeline is highly ambitious for developing, validating, and interpreting these models, posing a significant risk to successful completion.
 **Score: 4/10**
 
-#### Strengths
+#### 1.4: Strengths
 
-- **Highly Innovative:** Represents a true paradigm shift in line with the Carroll Award's core mission.
+* **Highly Innovative:** Represents a true paradigm shift in line with the Carroll Award's core mission.
 * **Theoretically Sound:** The chosen models are theoretically well-suited for the problem and data type.
 * **Handles Data Sparsity:** Inherently designed to work with the messy, irregular data typical of clinical practice.
 
-#### Weaknesses
+#### 1.5: Weaknesses
 
-- **High Implementation Risk:** The technical complexity of HMMs and GRUs creates a high barrier to successful implementation.
+* **High Implementation Risk:** The technical complexity of HMMs and GRUs creates a high barrier to successful implementation.
 * **Resource Intensive:** Requires specialized computational hardware (GPUs) and deep technical expertise.
 * **Ambitious Timeline:** A 12-month timeline is likely insufficient for this level of research and development.
 
 ---
 
-### 2. Hybrid Machine Learning Framework for Predicting Opioid Use
+### 2: Hybrid Machine Learning Framework for Predicting Opioid Use
 
 #### Overall Score: 8/10
 
-#### 1. Significance & Paradigm Shift (Weight: 40%)
+#### 2.1: Significance & Paradigm Shift (Weight: 40%)
 
 This proposal presents a more incremental, yet highly valuable, paradigm shift. It focuses on creating a practical early warning system that moves clinical practice from reactive to proactive care. While it doesn't fundamentally redefine the OUD model, its focus on using early treatment data (first 3 months) to predict long-term outcomes (6-12 months) is a significant step forward. It reframes the problem as one of "systems-level management" through timely prediction.
 **Score: 7/10**
 
-#### 2. Methodological Rigor (Weight: 30%)
+#### 2.2: Methodological Rigor (Weight: 30%)
 
 The methodology is exceptionally robust. The plan to develop and compare a suite of models—from interpretable baselines (Logistic Regression, Cox) to complex ensembles (Random Forest, XGBoost)—is a sound scientific approach. The use of 10-fold cross-validation, multiple evaluation metrics (AUC-ROC, F1, Brier score), and modern interpretability techniques (SHAP) demonstrates a high degree of methodological rigor.
 **Score: 9/10**
 
-#### 3. Feasibility (Weight: 30%)
+#### 2.3: Feasibility (Weight: 30%)
 
 Feasibility is the standout strength of this proposal. It relies on well-established, widely-used models that can be implemented with standard computational resources. The data requirements are clearly defined and aligned with the available dataset. The 12-month timeline is realistic, and the risk mitigation plan for challenges like missing data is clear and appropriate.
 **Score: 9/10**
 
-#### Strengths
+#### 2.4: Strengths
 
-- **Highly Feasible:** Low technical risk with a clear, achievable research plan.
+* **Highly Feasible:** Low technical risk with a clear, achievable research plan.
 * **Clinically Actionable:** The defined prediction tasks have immediate relevance and utility in a clinical setting.
 * **Methodologically Robust:** Employs best practices for model development, validation, and comparison.
 
-#### Weaknesses
+#### 2.5: Weaknesses
 
-- **Less Visionary:** The paradigm shift is less transformative compared to the other two proposals.
+* **Less Visionary:** The paradigm shift is less transformative compared to the other two proposals.
 * **"Hybrid" is a Competition:** The framework is more of a model bake-off than a novel ensemble that integrates different models.
 
 ---
 
-### 3. Temporal MultiView Clustering of Adult OUD Trajectories
+### 3: Temporal MultiView Clustering of Adult OUD Trajectories
 
 #### Overall Score: 9/10
 
-#### 1. Significance & Paradigm Shift (Weight: 40%)
+#### 3.1: Significance & Paradigm Shift (Weight: 40%)
 
 This proposal represents a significant and innovative paradigm shift. It moves beyond analyzing single data streams (e.g., substance use alone) to an integrated, multi-view approach that models the interplay between substance use, treatment history, and socio-clinical factors over time. This systems-level perspective directly aligns with the Carroll Award's focus. The goal of defining "OUD Archetypes" from adult data to inform future adolescent risk screening is a novel and impactful translational vision.
 **Score: 9/10**
 
-#### 2. Methodological Rigor (Weight: 30%)
+#### 3.2: Methodological Rigor (Weight: 30%)
 
 The proposal is methodologically sophisticated and advanced. Multi-view learning is a cutting-edge technique perfectly suited for integrating disparate data types. The plan to engineer temporal features (slopes, volatility) and use advanced clustering algorithms (spectral clustering, late fusion) is technically impressive. The validation strategy, which includes internal metrics, stability analysis, and clinical interpretation, is comprehensive and robust.
 **Score: 9/10**
 
-#### 3. Feasibility (Weight: 30%)
+#### 3.3: Feasibility (Weight: 30%)
 
 The project is ambitious but feasible. While the methodology is complex, it is less experimental than the Dynamic State-Transition proposal. The 24-month timeline is realistic for the complexity of the work, allowing sufficient time for data engineering, modeling, and interpretation. The primary risk lies in the sample size requirements and the challenge of discovering clinically meaningful, stable clusters, but the proposal acknowledges these risks.
 **Score: 8/10**
 
-#### Strengths
+#### 3.4: Strengths
 
-- **Strong Paradigm Shift:** Offers a novel, systems-level view of OUD that is highly aligned with the award's goals.
+* **Strong Paradigm Shift:** Offers a novel, systems-level view of OUD that is highly aligned with the award's goals.
 * **Technically Sophisticated:** Uses advanced, appropriate AI/ML methods to answer a complex question.
 * **Translational Vision:** The long-term goal of informing adolescent prevention is highly significant.
 
-#### Weaknesses
+#### 3.5: Weaknesses
 
-- **Longer Timeline:** The 24-month project duration is the longest of the three.
+* **Longer Timeline:** The 24-month project duration is the longest of the three.
 * **Discovery-Based Risk:** The success of the project hinges on the discovery of meaningful and robust patient clusters.
 * **Indirect Primary Outcome:** The main output is a set of archetypes, with the clinical screening tool being a future goal.
 
